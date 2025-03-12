@@ -1,3 +1,7 @@
 {
-    "cmake.sourceDirectory": "C:/Users/simon/Downloads/AV_25T1_TA/AV_25T1_TA_Brief"
+    "cmake.sourceDirectory": "C:/Users/simon/Downloads/AV_25T1_TA/AV_25T1_TA_Brief",
+    "files.associations": {
+        "utility": "cpp",
+        "memory": "cpp"
+    }
 }
