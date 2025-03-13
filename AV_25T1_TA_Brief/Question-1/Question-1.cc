@@ -82,7 +82,7 @@ int main() {
     show_output(p);
 
     // Initialise a person on the heap with the use of smart pointers (unique_ptr) instead.
-    // No logner uses regular pointers, uses smart pointers.
+    // No longer uses regular pointers, uses smart pointers.
     std::unique_ptr<Person> ptr = std::make_unique<Person>();
     ptr->age = 10;
     ptr->weight = 55.5;
