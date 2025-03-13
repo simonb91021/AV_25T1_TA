@@ -14,6 +14,7 @@ int total = 0;
 class Wallet
 {
     int mMoney;
+    std::mutex mMutex;
 public:
     Wallet() :mMoney(0) {}
     int getMoney() const { return mMoney; }
@@ -21,7 +22,9 @@ public:
     {
         for (int i = 0; i < money; ++i)
         {
+            mMutex.lock();
             mMoney++;
+            mMutex.unlock();
         }
     }
 };
