@@ -62,6 +62,26 @@ std::vector<CANdata> parsingLog(const std::string &logFile) {
     while (std::getline(file, canLine)) {
         CANdata msg{};
         std::istringstream iss(canLine);
-        
+        if (canLine[0] == '(') {
+            // Get timestamp for line
+            size_t start = canLine.find('(') + 1;
+            size_t end = canLine.find(')'); // Checks inside the brackets.
+            msg.timestamp = std::stod(canLine.substr(start, end-start));
+
+            // get the CAN ID
+            
+            //
+        }
+        data.push_back(msg);
     }
+    return data;
 }
+
+//Extract WheelSpeedRR, bit count starts at 32 and is of 16 length, at byte 4&5.
+double wheelSpeedRR(const CANdata &data) { //0x705 is the hexadecimal of 1707 decimal, this is derived from the dbc file so the correct CAN ID shows the wheel data.
+    if (data.canId != 0x705) {
+        return false;
+    } 
+    uint16_t rawData = (data.data[4] << 8) | data.data[5];
+}
+
